@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support Ticket Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Support Desk</h1>
+    <button class="btn primary" id="newBtn">+ New ticket</button>
+  </header>
+
+  <main>
+    <section class="stats" aria-label="Summary">
+      <div class="stat"><span id="s-total">–</span><small>Total</small></div>
+      <div class="stat open"><span id="s-open">–</span><small>Open</small></div>
+      <div class="stat progress"><span id="s-in_progress">–</span><small>In Progress</small></div>
+      <div class="stat resolved"><span id="s-resolved">–</span><small>Resolved</small></div>
+    </section>
+
+    <section class="filters">
+      <input type="search" id="q" placeholder="Search title or customer email…" aria-label="Search" />
+      <select id="status" aria-label="Status"><option value="">All statuses</option><option>Open</option><option>In Progress</option><option>Resolved</option></select>
+      <select id="priority" aria-label="Priority"><option value="">All priorities</option><option>Low</option><option>Medium</option><option>High</option></select>
+      <select id="sort" aria-label="Sort"><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select>
+    </section>
+
+    <div id="list" class="list" aria-live="polite"></div>
+    <nav class="pager" id="pager"></nav>
+  </main>
+
+  <dialog id="createDlg">
+    <form id="createForm" novalidate>
+      <h2>New ticket</h2>
+      <label>Title <input name="title" maxlength="130" /><em data-err="title"></em></label>
+      <label>Description <textarea name="description" rows="4"></textarea><em data-err="description"></em></label>
+      <label>Customer email <input name="customer_email" type="email" /><em data-err="customer_email"></em></label>
+      <div class="row">
+        <label>Priority <select name="priority"><option>Low</option><option selected>Medium</option><option>High</option></select></label>
+        <label>Status <select name="status"><option>Open</option><option>In Progress</option><option>Resolved</option></select></label>
+      </div>
+      <p class="form-error" id="createError"></p>
+      <div class="actions"><button type="button" class="btn" data-close>Cancel</button><button class="btn primary">Create</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="viewDlg">
+    <div id="viewBody"></div>
+  </dialog>
+
+  <div id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "support-ticket-dashboard",
+  "version": "1.0.0",
+  "description": "Support ticket dashboard: Express + SQLite + vanilla JS",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "seed": "node src/seed.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "express": "^4.19.2"
+  }
+}
